@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="grid-2">
+          <div class="card glass reveal">
+            <h3 class="mb-2">General Settings</h3>
+            <div class="form-group"><label class="form-label">Workspace Name</label><input class="form-input" value="My Workspace"></div>
+            <div class="form-group"><label class="form-label">Timezone</label><select class="form-select"><option>UTC-5 Eastern</option><option>UTC-8 Pacific</option><option>UTC+0 London</option></select></div>
+            <div class="form-group"><label class="form-label">Language</label><select class="form-select" id="lang-select"><option>English</option><option>Spanish</option><option>French</option><option>German</option><option>Japanese</option></select></div>
+            <button class="btn btn-primary">Save Changes</button>
+          </div>
+          <div class="card glass reveal">
+            <h3 class="mb-2">Notification Preferences</h3>
+            <label class="flex-between mb-2"><span>Email notifications</span><input type="checkbox" checked></label>
+            <label class="flex-between mb-2"><span>Push notifications</span><input type="checkbox" checked></label>
+            <label class="flex-between mb-2"><span>Campaign alerts</span><input type="checkbox" checked></label>
+            <label class="flex-between mb-2"><span>Weekly digest</span><input type="checkbox" checked></label>
+          </div>
+          <div class="card glass reveal">
+            <h3 class="mb-2">Automation Workflows</h3>
+            <p class="text-muted mb-2">Auto-publish approved posts</p>
+            <p class="text-muted mb-2">Auto-reply to DMs (business hours)</p>
+            <p class="text-muted mb-2">Hashtag performance alerts</p>
+            <button class="btn btn-outline">Manage Workflows</button>
+          </div>
+          <div class="card glass reveal">
+            <h3 class="mb-2">Keyboard Shortcuts</h3>
+            <p><kbd>Ctrl+K</kbd> Search · <kbd>Ctrl+D</kbd> Dashboard · <kbd>Ctrl+N</kbd> Notifications</p>
+            <a href="themes.html" class="btn btn-outline mt-2">Theme Settings →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>SocialPulseApp.initLayout('Settings','Configure workspace, notifications, and automation'));</script>
+</body>
+</html>

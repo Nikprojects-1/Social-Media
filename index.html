@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialPulse — Social Media Analytics & Management Platform</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="landing">
+  <div class="bg-gradient"></div>
+  <div class="bg-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+  <div class="particles" id="particles"></div>
+
+  <nav class="landing-nav glass">
+    <a href="index.html" style="display:flex;align-items:center;gap:0.5rem;color:var(--text);font-weight:700;font-family:'Space Grotesk'">
+      <span style="width:36px;height:36px;background:var(--gradient-1);border-radius:10px;display:flex;align-items:center;justify-content:center">⚡</span>
+      SocialPulse
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#analytics">Analytics</a></li>
+      <li><a href="#integrations">Platforms</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="flex gap-1">
+      <button class="btn btn-outline btn-sm" id="theme-toggle">🌓</button>
+      <a href="dashboard.html" class="btn btn-primary btn-sm">Launch Dashboard</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content reveal">
+      <h1>Manage All Your <span class="gradient-text">Social Media</span> In One Place</h1>
+      <p>Enterprise-grade analytics, scheduling, campaign management, and audience insights. Trusted by 50,000+ marketing teams worldwide.</p>
+      <div class="hero-buttons">
+        <a href="dashboard.html" class="btn btn-primary">Start Free Trial</a>
+        <a href="#analytics" class="btn btn-outline">View Demo Analytics</a>
+      </div>
+      <div class="stats-grid" style="margin-top:3rem;max-width:500px">
+        <div><div class="stat-value" style="font-size:1.5rem">2.8M+</div><div class="text-muted" style="font-size:0.8rem">Posts Analyzed</div></div>
+        <div><div class="stat-value" style="font-size:1.5rem">4.87%</div><div class="text-muted" style="font-size:0.8rem">Avg Engagement</div></div>
+        <div><div class="stat-value" style="font-size:1.5rem">7</div><div class="text-muted" style="font-size:0.8rem">Platforms</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="glass floating-card card">
+        <div class="realtime-indicator">Live Analytics</div>
+        <div class="stat-value" style="font-size:2rem;margin:0.5rem 0">+18.4%</div>
+        <div class="text-muted" style="font-size:0.85rem">Engagement this week</div>
+        <div class="mini-chart mt-2" id="hero-mini-chart"></div>
+      </div>
+      <div class="glass floating-card card">
+        <div class="flex-between"><span>📅 Scheduled</span><span class="badge badge-success">847</span></div>
+        <p class="text-muted mt-1" style="font-size:0.85rem">24 posts publishing today</p>
+      </div>
+      <div class="glass floating-card card">
+        <div class="flex gap-1"><span>📸</span><span>📘</span><span>🐦</span><span>💼</span></div>
+        <div class="stat-value" style="font-size:1.25rem;margin-top:0.5rem">2.8M Followers</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="analytics">
+    <div class="section-header reveal">
+      <h2>Powerful Analytics Preview</h2>
+      <p>Real-time dashboards with engagement tracking, audience growth, and performance scorecards.</p>
+    </div>
+    <div class="glass card reveal" style="padding:2rem">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">Total Reach</div><div class="stat-value">12.8M</div><div class="stat-change positive">+18.2% vs last month</div></div>
+        <div class="stat-card"><div class="stat-label">Engagement Rate</div><div class="stat-value">4.87%</div><div class="stat-change positive">+0.8% improvement</div></div>
+        <div class="stat-card"><div class="stat-label">Active Campaigns</div><div class="stat-value">45</div><div class="stat-change positive">12 launching this week</div></div>
+        <div class="stat-card"><div class="stat-label">Team Members</div><div class="stat-value">25</div><div class="stat-change positive">3 online now</div></div>
+      </div>
+      <div class="chart-container mt-2" style="height:200px"><canvas id="landing-chart"></canvas></div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="section-header reveal">
+      <h2>Everything You Need to Scale</h2>
+      <p>From post scheduling to competitor analysis — one platform for your entire social strategy.</p>
+    </div>
+    <div class="features-grid">
+      <div class="glass feature-card card reveal"><div class="feature-icon">📊</div><h3>Analytics Dashboard</h3><p>Real-time metrics, growth charts, and performance scorecards across all platforms.</p></div>
+      <div class="glass feature-card card reveal"><div class="feature-icon">📅</div><h3>Post Scheduling</h3><p>Drag-and-drop calendar, multi-platform queue, and AI-powered best time recommendations.</p></div>
+      <div class="glass feature-card card reveal"><div class="feature-icon">🎯</div><h3>Campaign Management</h3><p>Budget tracking, ROI analytics, and goal progress for every marketing campaign.</p></div>
+      <div class="glass feature-card card reveal"><div class="feature-icon">👥</div><h3>Audience Insights</h3><p>Demographics, geographic data, active hours, and interest-based segmentation.</p></div>
+      <div class="glass feature-card card reveal"><div class="feature-icon">🤖</div><h3>AI Content Assistant</h3><p>Caption suggestions, trending ideas, and smart hashtag recommendations.</p></div>
+      <div class="glass feature-card card reveal"><div class="feature-icon">⚔️</div><h3>Competitor Analysis</h3><p>Track competitor growth, engagement comparisons, and audience overlap.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="integrations">
+    <div class="section-header reveal"><h2>Connect All Major Platforms</h2><p>Unified dashboard for Instagram, Facebook, X, LinkedIn, YouTube, TikTok, and Pinterest.</p></div>
+    <div class="grid-4" id="landing-platforms"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-header reveal"><h2>Loved by Marketing Teams</h2></div>
+    <div class="grid-3">
+      <div class="glass testimonial-card card reveal"><p class="quote">"SocialPulse transformed how we manage 12 brand accounts. Engagement up 34% in 90 days."</p><div class="testimonial-author"><div class="avatar">MK</div><div><strong>Marketing Lead</strong><br><span class="text-muted">Tech Startup</span></div></div></div>
+      <div class="glass testimonial-card card reveal"><p class="quote">"The campaign ROI tracking alone saved us thousands. Best analytics platform we have used."</p><div class="testimonial-author"><div class="avatar">JL</div><div><strong>Director of Growth</strong><br><span class="text-muted">E-commerce Brand</span></div></div></div>
+      <div class="glass testimonial-card card reveal"><p class="quote">"Scheduling, hashtags, and team collaboration in one place. Our productivity doubled."</p><div class="testimonial-author"><div class="avatar">AR</div><div><strong>Social Media Manager</strong><br><span class="text-muted">Agency</span></div></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="section-header reveal"><h2>Simple, Transparent Pricing</h2><p>Start free. Scale as you grow. No hidden fees.</p></div>
+    <div class="pricing-grid" id="landing-pricing"></div>
+  </section>
+
+  <section class="section" style="text-align:center">
+    <div class="glass card reveal" style="padding:4rem 2rem">
+      <h2 style="font-size:2.5rem;margin-bottom:1rem">Ready to Elevate Your Social Presence?</h2>
+      <p class="text-muted" style="margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto">Join thousands of teams using SocialPulse to grow faster.</p>
+      <a href="dashboard.html" class="btn btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem">Get Started Free →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div><h4>⚡ SocialPulse</h4><p class="text-muted" style="font-size:0.875rem;margin-top:0.5rem">Premium social media analytics and management platform.</p></div>
+      <div><h4>Product</h4><ul><li><a href="dashboard.html">Dashboard</a></li><li><a href="scheduler.html">Scheduler</a></li><li><a href="analytics.html">Analytics</a></li><li><a href="campaigns.html">Campaigns</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="subscription.html">Pricing</a></li><li><a href="settings.html">Settings</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="security.html">Security</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 SocialPulse. Demo platform — no personal data included.</div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLanding();
+      const platforms = document.getElementById('landing-platforms');
+      if (platforms) platforms.innerHTML = SocialPulseData.platformStats.map(p =>
+        `<div class="card platform-card reveal"><div class="platform-icon">${p.icon}</div><h4>${p.name}</h4><div class="followers">${SocialPulseData.formatNum(p.followers)}</div></div>`
+      ).join('');
+      const pricing = document.getElementById('landing-pricing');
+      if (pricing) pricing.innerHTML = SocialPulseData.subscriptions.map(s =>
+        `<div class="glass pricing-card card reveal ${s.popular ? 'featured' : ''}"><h3>${s.name}</h3><div class="price">$${s.price}<span>/mo</span></div><ul class="pricing-features">${s.features.map(f => `<li>${f}</li>`).join('')}</ul><a href="subscription.html" class="btn ${s.popular ? 'btn-primary' : 'btn-outline'} w-full">Choose Plan</a></div>`
+      ).join('');
+      SocialPulseCharts.miniBars('hero-mini-chart', SocialPulseData.weeklyGrowth.slice(0, 7));
+      if (document.getElementById('landing-chart')) {
+        SocialPulseCharts.lineChart('landing-chart', ['Jan','Feb','Mar','Apr','May','Jun'],
+          [{ data: SocialPulseData.monthlyReach.slice(0, 6).map(v => v/100000), color: '#7C3AED' }], { fill: true });
+      }
+    });
+  </script>
+</body>
+</html>

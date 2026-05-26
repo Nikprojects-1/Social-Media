@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hashtag Analytics — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="search-box reveal mb-2" style="max-width:100%"><span>🔍</span><input type="search" id="hashtag-search" placeholder="Search 200+ hashtags..."></div>
+        <div class="stats-grid">
+          <div class="card stat-card"><div class="stat-label">Tracked Hashtags</div><div class="stat-value">200</div></div>
+          <div class="card stat-card"><div class="stat-label">Trending Now</div><div class="stat-value">34</div></div>
+          <div class="card stat-card"><div class="stat-label">Avg Engagement</div><div class="stat-value">8.4%</div></div>
+          <div class="card stat-card"><div class="stat-label">Total Reach</div><div class="stat-value">48M</div></div>
+        </div>
+        <div class="card glass reveal mt-2"><h3 class="mb-2">Hashtag Cloud</h3><div id="hashtag-cloud"></div></div>
+        <div class="card glass reveal mt-2"><h3 class="mb-2">Performance Table</h3><div id="hashtag-table"></div></div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Hashtag Analytics', '200 hashtags with reach, engagement, and trend data');
+      SocialPulseAnalytics.renderHashtags('hashtag-cloud', 200);
+      SocialPulseApp.renderTable('hashtag-table', SocialPulseData.hashtags.slice(0, 80), [
+        { label: 'Hashtag', key: 'tag' },
+        { label: 'Posts', key: 'posts', render: r => SocialPulseData.formatNum(r.posts) },
+        { label: 'Reach', key: 'reach', render: r => SocialPulseData.formatNum(r.reach) },
+        { label: 'Engagement', key: 'engagement', render: r => r.engagement + '%' },
+        { label: 'Trend', key: 'trend', render: r => `<span class="trend-tag trend-${r.trend==='rising'?'up':r.trend==='falling'?'down':'up'}">${r.trend} ${r.growth}%</span>` }
+      ]);
+      document.getElementById('hashtag-search')?.addEventListener('input', e => {
+        const q = e.target.value.toLowerCase();
+        document.querySelectorAll('#hashtag-cloud .hashtag-chip, #hashtag-table tr').forEach(el => {
+          el.style.display = !q || el.textContent.toLowerCase().includes(q) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

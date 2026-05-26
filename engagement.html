@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engagement Analytics — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="stats-grid" id="eng-stats"></div>
+        <div class="grid-2">
+          <div class="card glass reveal"><h3>Engagement by Type</h3><div class="chart-container"><canvas id="chart-engagement-pie"></canvas></div></div>
+          <div class="card glass reveal"><h3>Weekly Activity</h3><div class="chart-container"><canvas id="chart-engagement"></canvas></div></div>
+        </div>
+        <div class="card glass reveal mt-2"><h3 class="mb-2">Detailed Metrics</h3><div id="engagement-breakdown"></div></div>
+        <div class="card glass reveal mt-2"><h3 class="mb-2">Platform Breakdown</h3><div id="platform-engagement"></div></div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Engagement Analytics', 'Likes, comments, shares, saves, and CTR across all platforms');
+      const em = SocialPulseData.engagementMetrics;
+      SocialPulseApp.renderStats('eng-stats', [
+        { label: 'Total Likes', value: SocialPulseData.formatNum(em.likes), change: '+14.2%', positive: true },
+        { label: 'Comments', value: SocialPulseData.formatNum(em.comments), change: '+8.7%', positive: true },
+        { label: 'Shares', value: SocialPulseData.formatNum(em.shares), change: '+11.3%', positive: true },
+        { label: 'CTR', value: em.ctr + '%', change: '+0.4%', positive: true }
+      ]);
+      SocialPulseAnalytics.renderEngagementBreakdown('engagement-breakdown');
+      document.getElementById('platform-engagement').innerHTML = em.byPlatform.map(p => `
+        <div class="metric-row reveal" data-searchable">
+          <span>${SocialPulseData.platformIcons[p.platform]} ${p.platform}</span>
+          <div class="metric-bar"><div class="metric-bar-fill" style="width:${(p.likes/em.likes)*100}%"></div></div>
+          <span>${SocialPulseData.formatNum(p.likes)} likes</span>
+        </div>`).join('');
+    });
+  </script>
+</body>
+</html>

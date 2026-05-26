@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Calendar — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="card glass reveal"><div id="main-calendar"></div></div>
+        <h3 class="mt-2">Scheduled This Month</h3>
+        <div id="calendar-posts-list"></div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/scheduler.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Content Calendar', 'Visual calendar with 230+ scheduled posts');
+      SocialPulseScheduler.initCalendarPage();
+    });
+  </script>
+</body>
+</html>

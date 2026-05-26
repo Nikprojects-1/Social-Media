@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Heatmaps — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="card glass reveal">
+          <h3 class="mb-2">Engagement Heatmap (7 days × 24 hours)</h3>
+          <p class="text-muted mb-2">Darker = higher activity — 168 data points</p>
+          <div class="heatmap-grid" id="heatmap-grid"></div>
+          <div class="heatmap-legend"><span>Less</span><div class="legend-scale"><span style="background:rgba(124,58,237,0.2)"></span><span style="background:rgba(124,58,237,0.5)"></span><span style="background:rgba(124,58,237,0.8)"></span><span style="background:#7C3AED"></span></div><span>More</span></div>
+        </div>
+        <div class="grid-2 mt-2">
+          <div class="card glass reveal"><h3>Best Posting Times</h3><p class="mt-2">Peak: Tue & Thu 1-3 PM · Sat 10 AM</p><div id="active-hours-heat" style="display:flex;align-items:flex-end;height:100px;margin-top:1rem"></div></div>
+          <div class="card glass reveal"><h3>Offline Analytics Mode</h3><p class="text-muted mt-2">Cached data available for last 30 days</p><button class="btn btn-outline mt-2">Download Offline Pack</button></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Performance Heatmaps', 'Visual activity patterns across time');
+      SocialPulseCharts.initPageCharts();
+      const hours = SocialPulseData.audience.activeHours;
+      const max = Math.max(...hours.map(h => h.activity));
+      document.getElementById('active-hours-heat').innerHTML = hours.map(h =>
+        `<div style="flex:1;height:${(h.activity/max)*100}%;background:var(--gradient-1);margin:0 1px;border-radius:2px" title="${h.hour}:00"></div>`
+      ).join('');
+    });
+  </script>
+</body>
+</html>

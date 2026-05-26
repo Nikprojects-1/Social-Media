@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <nav class="landing-nav glass scrolled">
+    <a href="index.html" style="color:var(--text);font-weight:700">⚡ SocialPulse</a>
+    <a href="dashboard.html" class="btn btn-primary btn-sm">Dashboard</a>
+  </nav>
+  <section class="section" style="padding-top:8rem;max-width:600px">
+    <h1 class="reveal">Contact Us</h1>
+    <p class="text-muted reveal mb-2">Demo contact form — submissions are not sent to a server.</p>
+    <form class="card glass reveal" onsubmit="event.preventDefault();alert('Thank you! This is a demo form.');">
+      <div class="form-group"><label class="form-label">Name</label><input class="form-input" required></div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" required></div>
+      <div class="form-group"><label class="form-label">Subject</label><select class="form-select"><option>General Inquiry</option><option>Support</option><option>Enterprise Sales</option></select></div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" required></textarea></div>
+      <button type="submit" class="btn btn-primary w-full">Send Message</button>
+    </form>
+  </section>
+  <script src="js/themes.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>SocialPulseThemes.init());</script>
+</body>
+</html>

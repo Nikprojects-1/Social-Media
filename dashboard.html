@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="bg-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="stats-grid" id="main-stats"></div>
+        <div class="grid-2">
+          <div class="card glass reveal">
+            <div class="widget-header"><h3>Audience Growth</h3><span class="realtime-indicator">Live</span></div>
+            <div class="chart-container"><canvas id="chart-growth"></canvas></div>
+          </div>
+          <div class="card glass reveal">
+            <div class="widget-header"><h3>Platform Distribution</h3></div>
+            <div class="chart-container"><canvas id="chart-platforms"></canvas></div>
+          </div>
+        </div>
+        <div class="grid-3 mt-2">
+          <div class="card glass reveal">
+            <div class="widget-header"><h3>Performance Score</h3></div>
+            <div class="scorecard">
+              <div class="score">87</div>
+              <p class="text-muted">Overall social health score</p>
+              <div class="progress-ring mt-2" data-progress="87">
+                <svg width="120" height="120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--bg-secondary)" stroke-width="10"/><circle class="progress" cx="60" cy="60" r="52" fill="none" stroke="url(#grad)" stroke-width="10" stroke-linecap="round"/><defs><linearGradient id="grad"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient></defs></svg>
+              </div>
+            </div>
+          </div>
+          <div class="card glass reveal" style="grid-column:span 2">
+            <div class="widget-header"><h3>Real-Time Activity Feed</h3><a href="notifications.html">View all →</a></div>
+            <div class="activity-feed" id="activity-feed"></div>
+          </div>
+        </div>
+        <h3 class="mt-2 reveal">Connected Platforms</h3>
+        <div class="grid-4 mt-1" id="platform-cards"></div>
+        <div class="grid-2 mt-2">
+          <div class="card glass reveal">
+            <div class="widget-header"><h3>Top Performing Posts</h3><a href="analytics.html">Analytics →</a></div>
+            <div id="top-posts"></div>
+          </div>
+          <div class="card glass reveal">
+            <div class="widget-header"><h3>Weekly Engagement</h3></div>
+            <div class="chart-container"><canvas id="chart-engagement"></canvas></div>
+            <div class="mini-chart mt-2" id="mini-chart-bars"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Analytics Dashboard', 'Welcome back — here is your social performance overview');
+      SocialPulseApp.renderStats('main-stats');
+      SocialPulseApp.renderActivityFeed('activity-feed', 25);
+      SocialPulseApp.renderPlatformCards('platform-cards');
+      SocialPulseAnalytics.renderTopPosts('top-posts', 8);
+    });
+  </script>
+</body>
+</html>

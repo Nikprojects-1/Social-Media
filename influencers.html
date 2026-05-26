@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Influencer Analytics — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="stats-grid">
+          <div class="card stat-card"><div class="stat-label">Tracked Influencers</div><div class="stat-value">20</div></div>
+          <div class="card stat-card"><div class="stat-label">Avg Engagement</div><div class="stat-value">6.8%</div></div>
+          <div class="card stat-card"><div class="stat-label">Total Reach</div><div class="stat-value">12.4M</div></div>
+          <div class="card stat-card"><div class="stat-label">Active Collabs</div><div class="stat-value">8</div></div>
+        </div>
+        <div class="card glass reveal"><div id="influencers-table"></div></div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Influencer Analytics', '20 influencers with engagement scores and niche data');
+      SocialPulseApp.renderTable('influencers-table', SocialPulseData.influencers, [
+        { label: 'Creator', key: 'name', render: r => `<div class="flex gap-1"><div class="avatar avatar-sm">${r.name[0]}</div><div><strong>${r.name}</strong><br><span class="text-muted">${r.handle}</span></div></div>` },
+        { label: 'Platform', key: 'platform' },
+        { label: 'Followers', key: 'followers', render: r => SocialPulseData.formatNum(r.followers) },
+        { label: 'Engagement', key: 'engagement', render: r => r.engagement + '%' },
+        { label: 'Niche', key: 'niche' },
+        { label: 'Est. Cost', key: 'cost' },
+        { label: 'Score', key: 'score', render: r => `<span class="badge badge-success">${r.score}</span>` }
+      ]);
+    });
+  </script>
+</body>
+</html>

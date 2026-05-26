@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitor Analysis — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div id="competitors-grid"></div>
+        <div class="card glass reveal mt-2">
+          <h3 class="mb-2">Engagement Comparison</h3>
+          <div id="competitor-comparison"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Competitor Analysis', '12 competitors tracked with growth and overlap metrics');
+      SocialPulseAnalytics.renderCompetitors('competitors-grid');
+      document.getElementById('competitor-comparison').innerHTML = SocialPulseData.competitors.map(c => `
+        <div class="comparison-card card reveal mb-2" data-searchable style="padding:1rem">
+          <div><strong>You</strong><br>${SocialPulseData.stats.engagementRate}% eng.</div>
+          <div class="vs-badge">VS</div>
+          <div><strong>${c.name}</strong><br>${c.engagement}% eng.<br><span class="text-muted">${c.overlap}% overlap</span></div>
+        </div>`).join('');
+    });
+  </script>
+</body>
+</html>

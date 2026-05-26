@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audience Insights — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="stats-grid" id="audience-stats"></div>
+        <div class="card glass reveal mb-2"><h3 class="mb-2">Demographics</h3><div id="audience-demographics"></div></div>
+        <div class="grid-2">
+          <div class="card glass reveal"><h3 class="mb-2">Age Distribution</h3><div class="chart-container"><canvas id="chart-audience-age"></canvas></div></div>
+          <div class="card glass reveal"><h3 class="mb-2">Device Usage</h3>
+            <div id="device-stats"></div>
+          </div>
+        </div>
+        <div class="grid-2 mt-2">
+          <div class="card glass reveal"><h3 class="mb-2">Geographic Distribution</h3><div id="audience-map"></div><div id="audience-locations" class="mt-2" style="max-height:300px;overflow-y:auto"></div></div>
+          <div class="card glass reveal"><h3 class="mb-2">Audience Interests</h3><div id="audience-interests"></div><h3 class="mt-2 mb-2">Active Hours (24h)</h3><div id="active-hours-chart"></div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/audience.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Audience Insights', 'Demographics, behavior, and geographic analytics');
+      SocialPulseApp.renderStats('audience-stats', [
+        { label: 'Total Audience', value: '2.8M', change: '+12.4%', positive: true },
+        { label: 'Avg Age', value: '28-34', change: 'Primary segment', positive: true },
+        { label: 'Top Location', value: 'New York', change: '8.2% of audience', positive: true },
+        { label: 'Mobile Users', value: '68.4%', change: '+2.1%', positive: true }
+      ]);
+      SocialPulseAudience.init();
+      document.getElementById('device-stats').innerHTML = SocialPulseData.audience.devices.map(d =>
+        `<div class="metric-row"><span>${d.label}</span><div class="metric-bar"><div class="metric-bar-fill" style="width:${d.percent}%"></div></div><strong>${d.percent}%</strong></div>`
+      ).join('');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campaigns — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="flex-between mb-2 reveal"><button class="btn btn-primary">+ Create Campaign</button><div class="tabs"><button class="tab active">All</button><button class="tab">Active</button><button class="tab">Paused</button><button class="tab">Completed</button></div></div>
+        <div class="stats-grid" id="campaign-stats"></div>
+        <div class="grid-2">
+          <div class="card glass reveal"><div class="widget-header"><h3>Campaign ROI</h3></div><div class="chart-container"><canvas id="chart-campaign-roi"></canvas></div></div>
+          <div class="grid-2" id="campaign-cards-grid" style="display:grid"></div>
+        </div>
+        <h3 class="mt-2">All Campaigns (45)</h3>
+        <div id="campaigns-list" class="mt-1"></div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/campaigns.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Campaign Management', 'Track budgets, ROI, and performance across all campaigns');
+      const active = SocialPulseData.campaigns.filter(c => c.status === 'Active').length;
+      SocialPulseApp.renderStats('campaign-stats', [
+        { label: 'Active Campaigns', value: active, change: '12 ending soon', positive: true },
+        { label: 'Total Budget', value: '$' + SocialPulseData.campaigns.reduce((s,c)=>s+c.budget,0).toLocaleString(), change: 'Q2 allocation', positive: true },
+        { label: 'Avg ROI', value: '24.3%', change: '+3.2%', positive: true },
+        { label: 'Conversions', value: SocialPulseData.formatNum(SocialPulseData.campaigns.reduce((s,c)=>s+c.conversions,0)), change: '+18%', positive: true }
+      ]);
+      SocialPulseCampaigns.init();
+    });
+  </script>
+</body>
+</html>

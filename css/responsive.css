@@ -1,0 +1,97 @@
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .search-box {
+    display: none;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 6rem;
+  }
+
+  .hero-content { max-width: 100%; }
+  .hero-buttons { justify-content: center; }
+  .hero-visual { width: 100%; min-height: 300px; margin-top: 2rem; }
+
+  .grid-2 { grid-template-columns: 1fr; }
+  .comparison-card { grid-template-columns: 1fr; }
+  .vs-badge { margin: 0 auto; }
+
+  .landing-nav .nav-links { display: none; }
+}
+
+@media (max-width: 768px) {
+  .page-content { padding: 1rem; }
+  .top-header { padding: 0 1rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .grid-3, .grid-4 { grid-template-columns: 1fr; }
+
+  .heatmap-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .notif-dropdown {
+    width: calc(100vw - 2rem);
+    right: -1rem;
+  }
+
+  .footer-grid { grid-template-columns: 1fr; }
+
+  .floating-card {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .hero-visual .floating-card {
+    position: relative;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn { padding: 0.65rem 1rem; font-size: 0.85rem; }
+  .stat-value { font-size: 1.5rem; }
+  .page-title { font-size: 1.35rem; }
+  .tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 0.5rem; }
+}
+
+/* Scheduler calendar responsive */
+@media (max-width: 992px) {
+  .calendar-grid {
+    grid-template-columns: repeat(7, minmax(40px, 1fr)) !important;
+    font-size: 0.7rem;
+  }
+}
+
+/* Print styles for reports */
+@media print {
+  .sidebar, .top-header, .btn, .menu-toggle { display: none !important; }
+  .main-content { margin-left: 0 !important; }
+  body { background: white; color: black; }
+  .card { break-inside: avoid; border: 1px solid #ddd; }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — SocialPulse</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="bg-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="app-layout">
+    <aside class="sidebar glass" id="sidebar"></aside>
+    <main class="main-content">
+      <header class="top-header" id="page-header"></header>
+      <div class="page-content">
+        <div class="tabs"><button class="tab active">Overview</button><button class="tab">Posts</button><button class="tab">Stories</button><button class="tab">Reels</button></div>
+        <div class="stats-grid" id="analytics-stats"></div>
+        <div class="grid-2">
+          <div class="card glass reveal"><div class="widget-header"><h3>Monthly Reach</h3></div><div class="chart-container"><canvas id="chart-reach"></canvas></div></div>
+          <div class="card glass reveal"><div class="widget-header"><h3>Engagement Mix</h3></div><div class="chart-container"><canvas id="chart-engagement-pie"></canvas></div></div>
+        </div>
+        <div class="card glass reveal mt-2"><div class="widget-header"><h3>Engagement Breakdown</h3></div><div id="engagement-breakdown"></div></div>
+        <div class="grid-2 mt-2">
+          <div class="card glass reveal"><div class="widget-header"><h3>Top Posts (150 tracked)</h3></div><div id="top-posts" style="max-height:500px;overflow-y:auto"></div></div>
+          <div class="card glass reveal"><div class="widget-header"><h3>Monthly Engagement</h3></div><div class="chart-container"><canvas id="chart-monthly-eng"></canvas></div></div>
+        </div>
+        <div class="card glass reveal mt-2"><div class="widget-header"><h3>All Posts Data</h3></div><div id="posts-table"></div></div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SocialPulseApp.initLayout('Advanced Analytics', 'Deep insights across all platforms and content types');
+      SocialPulseApp.renderStats('analytics-stats', [
+        { label: 'Impressions', value: SocialPulseData.formatNum(SocialPulseData.stats.impressions), change: '+22.1%', positive: true },
+        { label: 'Clicks', value: SocialPulseData.formatNum(SocialPulseData.stats.clicks), change: '+15.4%', positive: true },
+        { label: 'Shares', value: SocialPulseData.formatNum(SocialPulseData.stats.shares), change: '+9.2%', positive: true },
+        { label: 'Saves', value: SocialPulseData.formatNum(SocialPulseData.stats.saves), change: '+11.8%', positive: true }
+      ]);
+      SocialPulseAnalytics.init();
+      SocialPulseAnalytics.renderTopPosts('top-posts', 20);
+      SocialPulseApp.renderTable('posts-table', SocialPulseData.posts.slice(0, 50), [
+        { label: 'Title', key: 'title', render: r => `<span class="truncate" style="max-width:200px;display:block">${r.title}</span>` },
+        { label: 'Platform', key: 'platform' },
+        { label: 'Status', key: 'status', render: r => `<span class="badge badge-primary">${r.status}</span>` },
+        { label: 'Likes', key: 'likes', render: r => SocialPulseData.formatNum(r.likes) },
+        { label: 'Reach', key: 'reach', render: r => SocialPulseData.formatNum(r.reach) },
+        { label: 'Eng.', key: 'engagement', render: r => r.engagement + '%' }
+      ]);
+    });
+  </script>
+</body>
+</html>
